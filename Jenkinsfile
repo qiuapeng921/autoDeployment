@@ -12,7 +12,7 @@ node {
         //dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '复制黏贴检测通过', notifyPeople: ''
     }
     stage ('打包发布镜像'){
-        sh 'sudo docker login --username=duoqing525@163.com --password=only521++ registry.cn-hangzhou.aliyuncs.com'
+        sh 'sudo docker login --username=qiuapeng921@163.com --password=only521++ registry.cn-hangzhou.aliyuncs.com'
         //sh 'sudo composer install --ignore-platform-reqs -vvv'
         //sh 'sudo cp .env.example .env'
         sh 'sudo docker build -t qiuapeng921/golang:$(cat ./VERSION) ./'
