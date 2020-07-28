@@ -24,7 +24,8 @@ node {
         //dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '发布镜像成功', notifyPeople: ''
     }
     stage ('清理构建镜像'){
-    	sh 'sudo docker rmi -f qiuapeng921/golang:$(cat ./VERSION)'
+        sh 'sudo docker rmi -f qiuapeng921/golang:$(cat ./VERSION)'
+    	sh 'sudo docker rmi -f registry.cn-hangzhou.aliyuncs.com/qiuapeng/golang:$(cat ./VERSION)'
     	//dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '清理构建镜像成功', notifyPeople: ''
     }
     stage ('启动最新镜像'){
