@@ -4,7 +4,9 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/qiuapeng/golang:VERSION
     container_name: golang
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:8080"
     networks:
       - default
+
+networks:
+  default:
