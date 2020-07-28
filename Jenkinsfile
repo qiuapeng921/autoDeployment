@@ -20,7 +20,7 @@ node {
         //dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '打包镜像成功', notifyPeople: ''
     }
     stage ('发布候选版本'){
-        sh 'sudo docker push registry.cn-hangzhou.aliyuncs.com/qiuapeng/swoft:$(cat ./VERSION)'
+        sh 'sudo docker push registry.cn-hangzhou.aliyuncs.com/qiuapeng/golang:$(cat ./VERSION)'
         //dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '发布镜像成功', notifyPeople: ''
     }
     stage ('清理构建镜像'){
