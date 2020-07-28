@@ -8,7 +8,7 @@ import (
 func main() {
 	r := gin.Default()
 	r.GET("/", func(context *gin.Context) {
-		context.String(http.StatusOK, "hello world")
+		context.String(http.StatusOK, "我艹无情,好残忍")
 		return
 	})
 	err := r.Run("0.0.0.0:8080")
