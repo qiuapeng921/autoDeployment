@@ -1,6 +1,6 @@
 node {
     stage ('检出最新代码'){
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2d0caac0-eaa8-4b43-93bb-7792ffa1d9bb', url: 'https://gitee.com/qiuapeng921/swoft.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2d0caac0-eaa8-4b43-93bb-7792ffa1d9bb', url: 'https://gitee.com/qiuapeng921/autoDeployment.git']]])
         dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '检出最新代码成功', notifyPeople: ''
     }
     stage ('规范检测'){
@@ -13,10 +13,10 @@ node {
     }
     stage ('打包发布镜像'){
         sh 'sudo docker login --username=duoqing525@163.com --password=only521++ registry.cn-hangzhou.aliyuncs.com'
-        sh 'sudo composer install --ignore-platform-reqs -vvv'
-        sh 'sudo cp .env.example .env'
-        sh 'sudo docker build -t qiuapeng921/swoft:$(cat ./VERSION) ./'
-        sh 'sudo docker tag qiuapeng921/swoft:$(cat ./VERSION) registry.cn-hangzhou.aliyuncs.com/qiuapeng/swoft:$(cat ./VERSION)'
+        //sh 'sudo composer install --ignore-platform-reqs -vvv'
+        //sh 'sudo cp .env.example .env'
+        sh 'sudo docker build -t qiuapeng921/golang:$(cat ./VERSION) ./'
+        sh 'sudo docker tag qiuapeng921/golang:$(cat ./VERSION) registry.cn-hangzhou.aliyuncs.com/qiuapeng/golang:$(cat ./VERSION)'
         dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '打包镜像成功', notifyPeople: ''
     }
     stage ('发布候选版本'){
@@ -24,7 +24,7 @@ node {
         dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '发布镜像成功', notifyPeople: ''
     }
     stage ('清理构建镜像'){
-    	sh 'sudo docker rmi -f qiuapeng921/swoft:$(cat ./VERSION)'
+    	sh 'sudo docker rmi -f qiuapeng921/golang:$(cat ./VERSION)'
     	dingTalk accessToken: 'd52e800dad9397bf51b6691463c0d5c5f8252d4af32bd7a06859fd1ad37a5370', imageUrl: '', jenkinsUrl: 'http://jenkins.phpswoole.cn/', message: '清理构建镜像成功', notifyPeople: ''
     }
     stage ('启动最新镜像'){
