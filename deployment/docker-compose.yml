@@ -1,0 +1,10 @@
+version: "3"
+services:
+  golang:
+    image: qiuapeng921/golang:VERSION
+    container_name: golang
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - default
