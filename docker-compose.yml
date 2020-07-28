@@ -1,7 +1,7 @@
 version: "3"
 services:
   golang:
-    image: qiuapeng921/golang:0.0.1
+    image: registry.cn-hangzhou.aliyuncs.com/qiuapeng/golang
     container_name: golang
     ports:
       - "80:80"
