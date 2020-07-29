@@ -13,6 +13,7 @@ node {
     }
     stage ('清理构建镜像'){
         sh 'sudo docker rmi -f qiuapeng921/golang'
+        sh 'sudo docker rmi -f $(sudo docker images | grep \'<none>\' | awk \'{print $3}\')'
     }
     stage ('替换关闭服务'){
         sh 'sed -i s/VERSION/$(cat VERSION)/g deployment/docker-compose.yml'
