@@ -1,6 +1,6 @@
 node {
     stage('拉取最新代码'){
-        git credentialsId: '120c0c39-5daf-49bd-8c0f-a718892510e0', url: 'https://gitee.com/qiuapeng921/autoDeployment'
+        git credentialsId: '120c0c39-5daf-49bd-8c0f-a718892510e0', url: 'https://github.com/qiuapeng921/autoDeployment'
     }
     stage ('打包构建镜像'){
 
