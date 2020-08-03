@@ -17,7 +17,7 @@ node {
     }
     stage ('替换关闭服务'){
         sh 'sed -i s/VERSION/$(cat VERSION)/g deployment/docker-compose.yml'
-        sh 'sudo docker-compose stop'
+        sh 'sudo docker-compose down'
         sh 'cp deployment/docker-compose.yml ./'
     }
     stage ('启动最新镜像'){
